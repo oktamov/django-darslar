@@ -5,7 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
-environ = "*"
+python-environ = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

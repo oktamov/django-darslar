@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>birinchi blog</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<header>
+    <h1 style="text-align: center"><a href="{% url 'home' %}">O'ktamov Blog</a></h1>
+    <hr size=3px">
+</header>
+{% if user.is_authenticated %}
+    <h3><strong>Xush kelibsiz, <span style="font-style: italic">{{ user.username }}!</span></strong></h3>
+    <p>
+        <a style="font-style: oblique" href="{% url 'logout' %}"><strong>Log-out</strong></a>
+    </p>
+{% else %}
+    <p style="text-align: center">
+        <a href="{% url 'login' %}"><strong style="font-style: oblique">Saytga Kirish</strong></a>
+    </p>
+    <p style="text-align: center">
+            <a href="{% url 'signup' %}"><strong style="font-style: oblique">Ro'yxatdan o'tish</strong></a><br>
+    </p>
+    <hr size="2px">
+{% endif %}
+<div>
+    {% block content %}
+    {% endblock content %}
+</div>
+<footer>
+    <h2><a href="{% url 'post_new' %}">Yangi post yozish uchun bosing</a></h2>
+</footer>
+
+</body>
+</html>
+

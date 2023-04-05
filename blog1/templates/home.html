@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
+    {% if user.is_authenticated %}
+
     {% for post in object_list %}
         <div class="post-entry">
             <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
@@ -10,4 +11,5 @@
         </div>
         <hr size="2px">
     {% endfor %}
+    {% endif %}
 {% endblock content %}

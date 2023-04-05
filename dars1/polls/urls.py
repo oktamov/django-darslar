@@ -3,5 +3,7 @@ from .views import homepage, questions
 
 urlpatterns = [
     path('', homepage, name='homepage'),
-    path('questions', questions, name='questions'),
+    path('questions/', questions, name='questions'),
 ]
+
+

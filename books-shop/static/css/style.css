@@ -1,0 +1,15 @@
+.col-xl-15 {
+        width: 50%;
+    }
+
+    @media (min-width: 768px) {
+        .col-xl-15 {
+            width: 33%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .col-xl-15 {
+            width: 20%;
+        }
+    }

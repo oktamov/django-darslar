@@ -4,12 +4,18 @@
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <form class="form-inline my-2 my-lg-10" style="margin-left: 50px">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </ul>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-left: 80px">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success me-md-2" type="submit" style="margin-left: 5px">Search</button>
+        </form>
+    </div>
+{#        <ul class="navbar-nav mr-auto">#}
+{#            <form class="form-inline my-2 my-lg-10" style="margin-left: 50px">#}
+{#                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+{#                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+{#            </form>#}
+{#        </ul>#}
         <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item active">
@@ -22,7 +28,7 @@
                 </li>
             {% else %}
                 <li class="nav-item active">
-                    <button class="btn btn-outline-success me-4" type="button" style="margin-left: 700px"><a
+                    <button class="btn btn-outline-success me-4" type="button" style="margin-left: 600px"><a
                             class="nav-link" href="{% url 'login' %}"> Kirish</a></button>
                 </li>
                 <li class="nav-item active">
@@ -33,5 +39,14 @@
         </ul>
     </div>
 </nav>
+{##}
+{#<nav class="navbar navbar-light bg-light">#}
+{#    <div class="d-grid gap-2 d-md-flex justify-content-md-end">#}
+{#        <form class="d-flex">#}
+{#            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+{#            <button class="btn btn-outline-success me-md-2" type="submit">Search</button>#}
+{#        </form>#}
+{#    </div>#}
+{#</nav>#}
 
 

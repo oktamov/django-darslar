@@ -1,15 +1,36 @@
+
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+    <head>
+    <link rel="stylesheet" type="text/css" href="static/css/slideshow.css">
+    </head>
     {% if user.is_authenticated %}
 
     {% for post in object_list %}
         <div class="post-entry">
             <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
             <ul>
-                <li style="font-style: oblique"><strong>{{ post.body | slice:":10" }}</strong></li>
+                <li style="font-style: oblique"><strong>{{ post.body | slice:":20" }}</strong></li>
             </ul>
         </div>
         <hr size="2px">
     {% endfor %}
+    {% else %}
+    <div class="slideshow-container" style="margin-top: 1px">
+      <div class="slide">
+        <img src="{% static 'images/rasm1.jpg' %}" alt="Image 1">
+      </div>
+      <div class="slide">
+        <img src="{% static 'images/rasm2.jpg' %}" alt="Image 2">
+      </div>
+      <div class="slide">
+        <img src="{% static 'images/rasm3.jpg' %}" alt="Image 3">
+      </div>
+      <div class="slide">
+        <img src="{% static 'images/rasm4.jpg' %}" alt="Image 4">
+      </div>
+    </div>
+    <script src="static/javascript/slideshow.js"></script>
     {% endif %}
 {% endblock content %}

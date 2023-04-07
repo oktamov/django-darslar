@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <head>
+        <style>
+            .card-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                grid-gap: 15px;
+            }
+
+            @media (max-width: 992px) {
+                .card-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                }
+            }
+
+            @media (min-width: 992px) {
+                .card-grid {
+                    max-height: calc(3 * 300px);
+                    overflow-y: auto;
+                }
+            }
+        </style>
+    </head>
+    <div class="container mt-5">
+        <div class="card-grid">
+            {% for book in books %}
+                <div class="card">
+                    <a href="{% url 'book' book.pk %}"><img src="{{ book.image.url }}" class="card-img-top" alt="..."
+                                                      width="100" height="200"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">{{ book.description| slice:":20" }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">{{ book.pub_year }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,56 @@
+{#{% extends 'base.html' %}#}
+{#{% block content %}#}
+{#    <head>#}
+{#    <style>#}
+{#        .images{#}
+{#    width: 600px;#}
+{#    margin-top: 20px;#}
+{#    margin-left: 20px;#}
+{#    background-color: cyan;#}
+{#}#}
+{#        .card-img-top{#}
+{#            width: 560px;#}
+{#            height: 400px;#}
+{#            margin-top: 20px;#}
+{#            margin-left: 20px;#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{#    </style>#}
+{#    </head>#}
+{#    <div class="contanier ">#}
+{#        <div class="images">#}
+{#            <img src="{{ book.image.url }}" class="card-img-top" alt="..." >#}
+{#        </div>#}
+{#        <div class="desc">#}
+{#            <a href="{{ book.file.url }}">yuklab olish</a>#}
+{#            <h2><upper>Nomi: <span style="font-style: oblique">{{ book.title }}</span></upper></h2><br>#}
+{#            <h5><upper>Author: <span style="font-style: oblique">{{ book.author.name }}</span></upper></h5><br>#}
+{#        </div>#}
+{#    </div>#}
+{#    #}
+
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ book.image.url }}" alt="Product Image" class="img-fluid" style="width: 500px;height: 400px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: cyan;">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ book.title }}</h2>
+                <p>{{ book.description }}</p>
+                <p><b>Author:</b> {{ book.author.name }}</p>
+                <p><b>Publication:</b> {{ book.pub_year }}</p>
+                <p><b>Publication date:</b> {{ book.page_size }}</p>
+                <p><b>Language:</b> {{ book.lang }}</p>
+                <h3>Price: {{ book.price}}</h3>
+                <button class="btn btn-primary">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+{% endblock content%}
+
+

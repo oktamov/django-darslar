@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block content %}
+    <head>
+        <style>
+            /* register form styles */
+            .login {
+                width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+            }
+
+            form#register {
+                margin: 0 auto;
+                width: 400px;
+                font-size: 18px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            form#register h3 {
+                text-align: center;
+                color: lightgreen;
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+
+            form#register hr {
+                margin: 20px 0;
+                border: none;
+                border-top: 1px solid #ccc;
+            }
+
+            form#register div {
+                margin-bottom: 10px;
+            }
+
+            form#register label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            form#register input[type="text"],
+            form#register input[type="email"],
+            form#register input[type="password"] {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+
+            form#register input[type="submit"] {
+                background-color: #4CAF50;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            form#register input[type="submit"]:hover {
+                background-color: #3e8e41;
+            }
+
+            form#register small {
+                color: red;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            #log {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            #log:hover {
+                background-color: #3e8e41;
+            }
+
+
+        </style>
+        <title></title>
+    </head>
+    <h2 style="text-align: center">Register here</h2>
+    <hr>
+
+    <form action="{% url 'accounts:register' %}" method="POST" id="register">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="col-xl-15">
+                <p>{{ field.label }}: <br> {{ field }}</p>
+
+                {% for error in field.errors %}
+                    <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button class="btn btn-outline-success me-2" type="submit" id="log">Register</button>
+    </form>
+{% endblock %}

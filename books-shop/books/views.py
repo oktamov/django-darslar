@@ -16,6 +16,12 @@ class ProductView(DetailView):
     template_name = "books/product.html"
 
 
+def category(request, pk):
+
+    results = Book.objects.filter(Q(category_id=pk))
+    context = {'books': results}
+    return render(request, 'books/category.html', context)
+
 
 
 def search(request):

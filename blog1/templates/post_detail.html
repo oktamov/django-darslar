@@ -6,6 +6,23 @@
         <h3>{{ post.author }}</h3>
         <p>{{ post.body }}</p>
     </div>
+    {% if user.id == post.author_id %}
     <p><a href="{% url 'post_edit' post.pk %}">Postni tahrirlash</a></p>
     <p><a href="{% url 'post_delete' post.pk %}">Postni O'chirish</a></p>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <form action="{% url 'blogpost_like' object.id %}" method="POST">
+            {% csrf_token %}
+
+            {% if post_is_liked %}
+                <button type="submit" name="blogpost_id" value="{{ object.id }}" class="btn btn-info">Unlike</button>
+            {% else %}
+                <button type="submit" name="blogpost_id" value="{{ object.id }}" class="btn btn-info">Like</button>
+            {% endif %}
+        </form>
+    {% else %}
+        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{ request.path }}">Log in to like this
+            article!</a><br>
+    {% endif %}
+    <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
 {% endblock content %}

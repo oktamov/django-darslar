@@ -18,8 +18,10 @@ class Yangiliklar(models.Model):
     category = models.ForeignKey("Category", on_delete=models.CASCADE, related_name="category")
     region = models.ForeignKey("Region", on_delete=models.CASCADE, related_name="region")
 
+
 class Region(models.Model):
     name = models.CharField(max_length=255)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
